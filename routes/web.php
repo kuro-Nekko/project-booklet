@@ -3,6 +3,7 @@
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Books;
+use App\Models\Chapters;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -53,6 +54,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('', 'index')->name('books');
     Route::get('create', 'create')->name('books.create');
     Route::post('store', 'store')->name('books.store');
+  });
+  Route::controller(ChaptersController::class)->prefix('chapters')->group(function(){
+    Route::get('', 'index')->name('chapters');
+    Route::get('create', 'create')->name('chapters.create');
+    Route::post('store', 'store')->name('chapters.store');
   });
 });
 
